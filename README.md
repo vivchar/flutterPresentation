@@ -1,16 +1,9 @@
-# ts
+# Cross-Platform App Development with Flutter SDK
 
-A new Flutter project.
+**Доклад состоит из двух частей:**
+* Небольшая теоретическая часть, где я расскажу что такое Flutter, в чем отличие от других кроссплатформенных SDK, как строится UI на Flutter.
+* Практическая часть, где покажу как создается новый проект, так же осуществим разбор работы виджетов, построение списков и навигация между экранами с передачей данных. 
 
-## Getting Started
+**На кого ориентирован доклад:** в первую очередь для iOS и Android разработчиков, но так же уже есть поддержка Web и Desktop(MacOS, Linus, Windows) приложений, но пока в бете.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Видео презентации:** https://youtu.be/nwL-ihFj4XM
