@@ -7,7 +7,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TomskSoft',
-      home: Center(child: Text("Спасибо за внимание!", textAlign: TextAlign.center),)
+      home: HomePage(),
+//      home: Center(child: Text("Спасибо за внимание!", textAlign: TextAlign.center),)
     );
   }
 }
@@ -20,7 +21,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
   final List<String> items = List.generate(4, (i) => "Item ${i + 1}");
 
   @override
@@ -65,8 +65,7 @@ class HomePageState extends State<HomePage> {
   }
 
   onAddItem() async {
-
-    openSecondPage("");
+    var name = await openSecondPage("");
 
 //    var name = await showDialog(
 //        context: context,
@@ -86,10 +85,11 @@ class HomePageState extends State<HomePage> {
 //          );
 //        });
 
-
-//    setState(() {
-//      items.add(name);
-//    });
+    if (name != null) {
+      setState(() {
+        items.add(name);
+      });
+    }
   }
 
   onRemoveItem(int position) {
@@ -108,17 +108,16 @@ class HomePageState extends State<HomePage> {
 
   void onEditItem(int position) async {
     var item = items[position];
-    var s = await openSecondPage(item);
+    var name = await openSecondPage(item);
 
     setState(() {
       items.removeAt(position);
-      items.insert(position, s);
+      items.insert(position, name == null ? "" : name);
     });
   }
 }
 
 class SecondRoute extends StatefulWidget {
-
   final String item;
 
   SecondRoute({Key key, @required this.item}) : super(key: key);
@@ -130,7 +129,6 @@ class SecondRoute extends StatefulWidget {
 }
 
 class SecondRouteState extends State<SecondRoute> {
-
   @override
   Widget build(BuildContext context) {
     final controller = TextEditingController(text: widget.item);
@@ -139,9 +137,12 @@ class SecondRouteState extends State<SecondRoute> {
       appBar: AppBar(
         title: Text("Enter a value"),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.done), onPressed: () {
-            Navigator.of(context).pop(controller.text);
-          },),
+          IconButton(
+            icon: Icon(Icons.done),
+            onPressed: () {
+              Navigator.of(context).pop(controller.text);
+            },
+          ),
         ],
       ),
       body: Padding(
